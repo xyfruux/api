@@ -5,8 +5,17 @@ const port = 3000;
 const app = express();
 
 app.get("/", (req, res) => {
-  const minPrice = parseInt(req.query.minPrice) || -Infinity;
-  const maxPrice = parseInt(req.query.maxPrice) || Infinity;
+  const minPrice = parseInt(req.query.minPrice);
+  const maxPrice = parseInt(req.query.maxPrice);
+
+  const filteredItems = data.filter((item) => {
+    return (
+      (!minPrice || item.price >= minPrice) &&
+      (!maxPrice || item.price <= maxPrice)
+    );
+  });
+
+  console.log(filteredItems);
 
   res.json(data);
 });
