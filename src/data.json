@@ -3,18 +3,21 @@
     "id": 1,
     "title": "Blue Mouse",
     "price": 10.99,
-    "description": "A blue mouse with a sleek design."
+    "description": "A blue mouse with a sleek design.",
+    "category": "Electronics"
   },
   {
     "id": 2,
     "title": "Red Keyboard",
     "price": 29.99,
-    "description": "A red keyboard with mechanical switches."
+    "description": "A red keyboard with mechanical switches.",
+    "category": "Electronics"
   },
   {
     "id": 3,
     "title": "Green Monitor",
     "price": 199.99,
-    "description": "A green monitor with high resolution."
+    "description": "A green monitor with high resolution.",
+    "category": "Electronics"
   }
 ]
