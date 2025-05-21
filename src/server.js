@@ -14,9 +14,7 @@ app.get("/", (req, res) => {
     );
   });
 
-  console.log(filteredItems);
-
-  res.json(data);
+  res.json(filteredItems);
 });
 
 app.listen(port, () => {
