@@ -5,12 +5,13 @@ const port = 3000;
 const app = express();
 
 app.get("/", (req, res) => {
-  const { minPrice, maxPrice } = req.query;
+  const { minPrice, maxPrice, category } = req.query;
 
   const filteredItems = data.filter((item) => {
     return (
       (!minPrice || item.price >= minPrice) &&
-      (!maxPrice || item.price <= maxPrice)
+      (!maxPrice || item.price <= maxPrice) &&
+      (!category || item.category == category)
     );
   });
 
