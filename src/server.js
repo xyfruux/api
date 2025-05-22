@@ -23,9 +23,13 @@ app.get("/", (req, res) => {
 });
 // TESTING
 app.put("/create", (req, res) => {
-  console.log(req.headers.authorization);
-  console.log(req.body);
-  res.status(200).json({ message: "TESTING" });
+  const { authorization } = req.headers;
+  console.log(authorization);
+  if (authorization === process.env.TEST) {
+    res.status(200).json({ message: "TESTING", auth: "Accepted" });
+  } else {
+    res.status(401).json({ message: "TESTING", auth: "Unaccepted" });
+  }
 });
 
 app.listen(port, () => {
