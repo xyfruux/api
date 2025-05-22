@@ -23,6 +23,7 @@ app.get("/", (req, res) => {
 });
 // TESTING
 app.put("/create", (req, res) => {
+  console.log(req.headers.authorization);
   console.log(req.body);
   res.status(200).json({ message: "TESTING" });
 });
