@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
   res.status(200).json(filteredItems);
 });
 // TESTING
-app.put("/create", (req, res) => {
+app.post("/create", (req, res) => {
   const { authorization } = req.headers;
   if (authorization === process.env.API_KEY) {
     res.status(200).json({ message: "TESTING", auth: "Accepted" });
