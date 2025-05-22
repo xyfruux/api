@@ -14,10 +14,24 @@
     "category": "electronics"
   },
   {
+    "id": 4,
+    "title": "Black Rose",
+    "price": 4.99,
+    "description": "A black rose to fit your garden.",
+    "category": "gardening"
+  },
+  {
     "id": 3,
     "title": "Green Monitor",
     "price": 199.99,
     "description": "A green monitor with high resolution.",
     "category": "electronics"
+  },
+  {
+    "id": 5,
+    "title": "HeyCola",
+    "price": 3.99,
+    "description": "A can of the signature HeyCola. Filled with carbonation.",
+    "category": "snacks"
   }
 ]
