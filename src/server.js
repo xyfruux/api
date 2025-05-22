@@ -24,8 +24,7 @@ app.get("/", (req, res) => {
 // TESTING
 app.put("/create", (req, res) => {
   const { authorization } = req.headers;
-  console.log(authorization);
-  if (authorization === process.env.TEST) {
+  if (authorization === process.env.API_KEY) {
     res.status(200).json({ message: "TESTING", auth: "Accepted" });
   } else {
     res.status(401).json({ message: "TESTING", auth: "Unaccepted" });
