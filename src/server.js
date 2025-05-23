@@ -8,14 +8,7 @@ mongoose
   .then(() => console.log("Connected to database"))
   .catch((err) => `Database error: ${err}`);
 
-const itemSchema = new mongoose.Schema({
-  title: String,
-  price: Number,
-  description: String,
-  category: [String],
-});
-
-const Item = mongoose.model("Item", itemSchema);
+const Item = require("./models/Item.js");
 
 async function run() {
   const items = await Item.find();
