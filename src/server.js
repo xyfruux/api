@@ -17,6 +17,8 @@ const itemSchema = new mongoose.Schema({
   category: [String],
 });
 
+const Item = mongoose.model("Item", itemSchema);
+
 require("dotenv").config();
 
 app.use(express.json());
