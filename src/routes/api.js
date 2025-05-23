@@ -21,7 +21,8 @@ router.get("/", (req, res) => {
 router.get("/test", async (req, res) => {
   const { minPrice, maxPrice } = req.query;
   const items = await Item.find({
-    price: { $gte: minPrice, $lte: maxPrice },
+    ...(minPrice && { price: { $gte: minPrice } }),
+    ...(maxPrice && { price: { $lte: maxPrice } }),
   });
 
   console.log(items);
