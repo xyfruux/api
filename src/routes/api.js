@@ -19,10 +19,11 @@ router.get("/", (req, res) => {
   res.status(200).json(filteredItems);
 });
 router.get("/test", async (req, res) => {
-  const { minPrice, maxPrice } = req.query;
+  const { minPrice, maxPrice, category } = req.query;
   const items = await Item.find({
     ...(minPrice && { price: { $gte: minPrice } }),
     ...(maxPrice && { price: { $lte: maxPrice } }),
+    ...(category && { category: { $in: [category] } }),
   });
 
   console.log(items);
