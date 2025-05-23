@@ -19,6 +19,13 @@ const itemSchema = new mongoose.Schema({
 
 const Item = mongoose.model("Item", itemSchema);
 
+async function run() {
+  const items = await Item.find();
+
+  console.log(items);
+}
+run();
+
 require("dotenv").config();
 
 app.use(express.json());
