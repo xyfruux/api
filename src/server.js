@@ -26,6 +26,10 @@ async function run() {
 }
 run();
 
+const apiRouter = require("../routes/api");
+
+app.use("/api", apiRouter);
+
 require("dotenv").config();
 
 app.use(express.json());
