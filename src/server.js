@@ -10,6 +10,13 @@ mongoose
   .then(() => console.log("Connected to database"))
   .catch((err) => `Database error: ${err}`);
 
+const itemSchema = new mongoose.Schema({
+  title: String,
+  price: Number,
+  description: String,
+  category: [String],
+});
+
 require("dotenv").config();
 
 app.use(express.json());
