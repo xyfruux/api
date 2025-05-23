@@ -27,8 +27,10 @@ async function run() {
 run();
 
 const apiRouter = require("./routes/api");
+const editRouter = require("./routes/edit.js");
 
 app.use("/api", apiRouter);
+app.use("/edit", editRouter);
 
 require("dotenv").config();
 
