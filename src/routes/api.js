@@ -26,8 +26,6 @@ router.get("/test", async (req, res) => {
     ...(category && { category: { $in: [category] } }),
   });
 
-  console.log(items);
-
   res.status(200).json(items);
 });
 
