@@ -26,7 +26,7 @@ async function run() {
 }
 run();
 
-const apiRouter = require("./routes/api");
+const apiRouter = require("./routes/api.js");
 const editRouter = require("./routes/edit.js");
 
 app.use("/api", apiRouter);
