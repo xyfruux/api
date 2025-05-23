@@ -5,20 +5,7 @@ const Item = require("../models/Item.js");
 
 const data = require("../data.json");
 
-router.get("/", (req, res) => {
-  const { minPrice, maxPrice, category } = req.query;
-
-  const filteredItems = data.filter((item) => {
-    return (
-      (!minPrice || item.price >= minPrice) &&
-      (!maxPrice || item.price <= maxPrice) &&
-      (!category || item.category == category)
-    );
-  });
-
-  res.status(200).json(filteredItems);
-});
-router.get("/test", async (req, res) => {
+router.get("/", async (req, res) => {
   const { minPrice, maxPrice, category } = req.query;
   const items = await Item.find({
     ...(minPrice && { price: { $gte: minPrice } }),
