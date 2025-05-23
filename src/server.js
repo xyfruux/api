@@ -34,19 +34,6 @@ require("dotenv").config();
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  const { minPrice, maxPrice, category } = req.query;
-
-  const filteredItems = data.filter((item) => {
-    return (
-      (!minPrice || item.price >= minPrice) &&
-      (!maxPrice || item.price <= maxPrice) &&
-      (!category || item.category == category)
-    );
-  });
-
-  res.status(200).json(filteredItems);
-});
 // TESTING
 app.post("/create", (req, res) => {
   const { authorization } = req.headers;
