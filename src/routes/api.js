@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const User = require("../models/Item.js");
+const Item = require("../models/Item.js");
 
 const data = require("../data.json");
 
@@ -19,7 +19,7 @@ router.get("/", (req, res) => {
   res.status(200).json(filteredItems);
 });
 router.get("/test", async (req, res) => {
-  const items = await User.find();
+  const items = await Item.find();
 
   console.log(items);
 
