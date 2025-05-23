@@ -19,9 +19,9 @@ router.get("/", (req, res) => {
   res.status(200).json(filteredItems);
 });
 router.get("/test", async (req, res) => {
-  const { minPrice } = req.query;
+  const { minPrice, maxPrice } = req.query;
   const items = await Item.find({
-    price: { $gte: minPrice },
+    price: { $gte: minPrice, $lte: maxPrice },
   });
 
   console.log(items);
