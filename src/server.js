@@ -4,6 +4,9 @@ const express = require("express");
 const port = 3000;
 const app = express();
 
+const mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost:27017");
+
 require("dotenv").config();
 
 app.use(express.json());
