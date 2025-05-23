@@ -5,7 +5,10 @@ const port = 3000;
 const app = express();
 
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017");
+mongoose
+  .connect("mongodb://localhost:27017")
+  .then(() => console.log("Connected to database"))
+  .catch((err) => `Database error: ${err}`);
 
 require("dotenv").config();
 
