@@ -28,7 +28,7 @@ router.get("/test", async (req, res) => {
 
   console.log(items);
 
-  res.json(items);
+  res.status(200).json(items);
 });
 
 module.exports = router;
