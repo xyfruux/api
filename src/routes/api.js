@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 
-const data = require("../src/data.json");
+const data = require("../data.json");
 
 router.get("/", (req, res) => {
   const { minPrice, maxPrice, category } = req.query;
