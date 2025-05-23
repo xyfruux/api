@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const data = require("../data.json");
 
 // TESTING
-app.post("/create", (req, res) => {
+router.post("/create", (req, res) => {
   const { authorization } = req.headers;
   if (authorization === process.env.API_KEY) {
     res.status(200).json({ message: "TESTING", auth: "Accepted" });
@@ -14,7 +14,7 @@ app.post("/create", (req, res) => {
   }
 });
 // TESTING
-app.delete("/delete", (req, res) => {
+router.delete("/delete", (req, res) => {
   const { authorization } = req.headers;
   const { id } = req.query;
 
@@ -29,3 +29,5 @@ app.delete("/delete", (req, res) => {
       .json({ message: `TESTING. DELETE ID: ${id}`, auth: "Unaccepted" });
   }
 });
+
+module.exports = router;
