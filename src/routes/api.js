@@ -3,8 +3,6 @@ const router = express.Router();
 
 const Item = require("../models/Item.js");
 
-const data = require("../data.json");
-
 router.get("/", async (req, res) => {
   const { minPrice, maxPrice, category } = req.query;
   const items = await Item.find({
