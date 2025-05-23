@@ -18,5 +18,12 @@ router.get("/", (req, res) => {
 
   res.status(200).json(filteredItems);
 });
+router.get("/test", async (req, res) => {
+  const items = await User.find();
+
+  console.log(items);
+
+  res.json(items);
+});
 
 module.exports = router;
