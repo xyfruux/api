@@ -11,12 +11,12 @@ mongoose
 const apiRouter = require("./routes/api.js");
 const editRouter = require("./routes/edit.js");
 
+app.use(express.json());
+
 app.use("/api", apiRouter);
 app.use("/edit", editRouter);
 
 require("dotenv").config();
-
-app.use(express.json());
 
 app.listen(port, () => {
   console.log(`Running on http://localhost:${port}`);
