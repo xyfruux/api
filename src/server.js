@@ -8,15 +8,6 @@ mongoose
   .then(() => console.log("Connected to database"))
   .catch((err) => `Database error: ${err}`);
 
-const Item = require("./models/Item.js");
-
-async function run() {
-  const items = await Item.find();
-
-  console.log(items);
-}
-run();
-
 const apiRouter = require("./routes/api.js");
 const editRouter = require("./routes/edit.js");
 
