@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
-
-const data = require("../data.json");
+const Item = require("../models/Item.js");
 
 // TESTING
 router.post("/create", (req, res) => {
