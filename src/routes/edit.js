@@ -36,17 +36,22 @@ router.post("/create", (req, res) => {
 // TESTING
 router.delete("/delete", (req, res) => {
   const { authorization } = req.headers;
-  const { id } = req.query;
+  const { id } = req.body;
 
-  if (authorization === process.env.API_KEY) {
-    console.log(id);
-    res
-      .status(200)
-      .json({ message: `TESTING. DELETE ID: ${id}`, auth: "Accepted" });
+  if (authorization !== process.env.API_KEY) {
+    res.status(401).json({ message: "Not authorized to delete items." });
   } else {
-    res
-      .status(401)
-      .json({ message: `TESTING. DELETE ID: ${id}`, auth: "Unaccepted" });
+    Item.deleteOne({ _id: id })
+      .then(() => {
+        res.status(200).json({ message: "Item deleted successfully!" });
+      })
+      .catch((err) => {
+        res
+          .status(500)
+          .json({
+            message: "Something went wrong deleting. Please try again later.",
+          });
+      });
   }
 });
 
