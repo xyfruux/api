@@ -1,21 +1,22 @@
-const data = require("./data.json");
-
 const express = require("express");
 const port = 3000;
 const app = express();
 
-app.get("/", (req, res) => {
-  const { minPrice, maxPrice } = req.query;
+const mongoose = require("mongoose");
+mongoose
+  .connect("mongodb://localhost:27017/data")
+  .then(() => console.log("Connected to database"))
+  .catch((err) => `Database error: ${err}`);
 
-  const filteredItems = data.filter((item) => {
-    return (
-      (!minPrice || item.price >= minPrice) &&
-      (!maxPrice || item.price <= maxPrice)
-    );
-  });
+const apiRouter = require("./routes/api.js");
+const editRouter = require("./routes/edit.js");
 
-  res.json(filteredItems);
-});
+app.use(express.json());
+
+app.use("/api", apiRouter);
+app.use("/edit", editRouter);
+
+require("dotenv").config();
 
 app.listen(port, () => {
   console.log(`Running on http://localhost:${port}`);
