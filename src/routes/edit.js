@@ -6,7 +6,10 @@ const Item = require("../models/Item.js");
 router.post("/create", (req, res) => {
   const { authorization } = req.headers;
 
-  if (authorization === process.env.API_KEY) {
+  if (authorization !== process.env.API_KEY) {
+    res.status(401).json({ message: "Not authorized." });
+    return;
+  } else {
     const data = req.body;
     const newItem = new Item({
       title: data.title,
@@ -28,8 +31,6 @@ router.post("/create", (req, res) => {
           message: "Something went wrong creating. Please try again later.",
         });
       });
-  } else {
-    res.status(401).json({ message: "TESTING", auth: "Unaccepted" });
   }
 });
 // TESTING
