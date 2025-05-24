@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Item = require("../models/Item.js");
 
-// TESTING
 router.post("/create", (req, res) => {
   const { authorization } = req.headers;
 
@@ -33,7 +32,7 @@ router.post("/create", (req, res) => {
       });
   }
 });
-// TESTING
+
 router.delete("/delete", (req, res) => {
   const { authorization } = req.headers;
   const { id } = req.body;
@@ -46,11 +45,9 @@ router.delete("/delete", (req, res) => {
         res.status(200).json({ message: "Item deleted successfully!" });
       })
       .catch((err) => {
-        res
-          .status(500)
-          .json({
-            message: "Something went wrong deleting. Please try again later.",
-          });
+        res.status(500).json({
+          message: "Something went wrong deleting. Please try again later.",
+        });
       });
   }
 });
