@@ -5,7 +5,17 @@ const Item = require("../models/Item.js");
 // TESTING
 router.post("/create", (req, res) => {
   const { authorization } = req.headers;
+
   if (authorization === process.env.API_KEY) {
+    const data = req.body;
+    const newItem = new Item({
+      title: data.title,
+      price: data.price,
+      description: data.description,
+      category: data.category,
+    });
+    console.log(data);
+    console.log(newItem);
     res.status(200).json({ message: "TESTING", auth: "Accepted" });
   } else {
     res.status(401).json({ message: "TESTING", auth: "Unaccepted" });
