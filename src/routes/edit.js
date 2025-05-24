@@ -52,4 +52,23 @@ router.delete("/delete", (req, res) => {
   }
 });
 
+router.put("/update", (req, res) => {
+  const { authorization } = req.headers;
+  const { id, key, value } = req.body;
+
+  if (authorization !== process.env.API_KEY) {
+    res.status(401).json({ message: "Not authorized to update items." });
+  } else {
+    Item.updateOne({ _id: id }, { $set: { [key]: value } })
+      .then(() =>
+        res.status(200).json({ message: "Item updated successfully!" })
+      )
+      .catch((err) =>
+        res.status(500).json({
+          message: "Something went wrong updating. Please try again later.",
+        })
+      );
+  }
+});
+
 module.exports = router;
