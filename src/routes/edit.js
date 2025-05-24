@@ -60,14 +60,14 @@ router.put("/update", (req, res) => {
     res.status(401).json({ message: "Not authorized to update items." });
   } else {
     Item.updateOne({ _id: id }, { $set: { [key]: value } })
-      .then(() =>
-        res.status(200).json({ message: "Item updated successfully!" })
-      )
-      .catch((err) =>
+      .then(() => {
+        res.status(200).json({ message: "Item updated successfully!" });
+      })
+      .catch((err) => {
         res.status(500).json({
           message: "Something went wrong updating. Please try again later.",
-        })
-      );
+        });
+      });
   }
 });
 
