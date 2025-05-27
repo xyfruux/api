@@ -6,7 +6,7 @@ router.post("/create", (req, res) => {
   const { authorization } = req.headers;
 
   if (authorization !== process.env.API_KEY) {
-    res.status(401).json({ message: "Not authorized." });
+    res.status(401).json({ message: "Not authorized to create items." });
     return;
   }
 
